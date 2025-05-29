@@ -62,14 +62,14 @@
     --popover: 210 10% 15%;
     --popover-foreground: 170 50% 90%;
 
-    --primary: 173 58% 45%; /* Slightly brighter deep teal for dark mode */
-    --primary-foreground: 0 0% 100%;
+    --primary: 180 60% 65%; /* Medium-Light Teal for dark mode primary */
+    --primary-foreground: 0 0% 100%; /* white */
 
-    --secondary: 210 10% 25%; /* Darker secondary */
+    --secondary: 220 14% 90%; /* Darker secondary */
     --secondary-foreground: 170 50% 80%;
 
     --muted: 210 10% 25%;
-    --muted-foreground: 170 50% 60%;
+    --muted-foreground: 170 40% 75%; /* Lighter, slightly desaturated teal for dark mode muted text */
 
     --accent: 203 39% 50%; /* Slightly brighter turquoise for dark mode */
     --accent-foreground: 0 0% 100%;
