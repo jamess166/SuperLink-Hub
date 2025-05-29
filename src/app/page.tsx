@@ -28,11 +28,11 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
-        <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-          <div className="w-full flex justify-end mb-6">
+        <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
+          <div className="w-full flex justify-end mb-4">
             <ThemeToggle />
           </div>
-          <header className="flex flex-col sm:flex-row items-center mb-10 sm:mb-12 text-center sm:text-left">
+          <header className="flex flex-col sm:flex-row items-center mb-6 sm:mb-8 text-center sm:text-left">
             <Image 
               src={logo} 
               alt="Logo EOPNP" 
@@ -49,7 +49,7 @@ export default function HomePage() {
             </div>
           </header>
 
-          <section className="mb-12">
+          <section className="mb-10">
             <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-foreground/90 flex items-center">
               <Globe className="mr-3 h-7 w-7 text-accent" />
               BIM 360
@@ -60,7 +60,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="mb-12">
+          <section className="mb-10">
             <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-foreground/90 flex items-center">
               <Building className="mr-3 h-7 w-7 text-accent" />
               Entorno Cesel
