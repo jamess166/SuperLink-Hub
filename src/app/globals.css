@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 170 67% 97%; /* #F0FAF9 light desaturated teal */
+    --background: 170 30% 97%; /* #F0FAF9 light desaturated teal */
     --foreground: 210 10% 23%; /* #2c3e50 dark blue-gray */
 
     --card: 0 0% 100%; /* white */
@@ -13,7 +13,7 @@
     --popover: 0 0% 100%; /* white */
     --popover-foreground: 210 10% 23%; /* #2c3e50 */
 
-    --primary: 173 58% 39%; /* #2A9D8F deep teal */
+    --primary: 212 69% 31%; /* #194f84 deep teal */
     --primary-foreground: 0 0% 100%; /* white */
 
     --secondary: 170 30% 92%; /* #E5F5F4 Light tealish gray */

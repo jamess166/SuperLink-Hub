@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { Globe, Building, FileText, Map, Package, CheckSquare, FolderOpen, CalendarDays } from 'lucide-react';
 import LinkCard from '@/components/link-card';
+import logo from './cesel_logotipo.png'
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const bim360CommonDataLinks = [
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
@@ -27,13 +29,16 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <div className="w-full flex justify-end mb-6">
+            <ThemeToggle />
+          </div>
           <header className="flex flex-col sm:flex-row items-center mb-10 sm:mb-12 text-center sm:text-left">
             <Image 
-              src="https://placehold.co/80x80.png" 
+              src={logo} 
               alt="Logo EOPNP" 
-              width={72} 
+              width={150} 
               height={72} 
-              className="mr-0 sm:mr-5 mb-4 sm:mb-0 rounded-lg shadow-md"
+              className="mr-0 sm:mr-5 mb-4 sm:mb-0 rounded-lg"
               data-ai-hint="company emblem"
             />
             <div>
