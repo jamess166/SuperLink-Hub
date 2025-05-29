@@ -5,7 +5,7 @@ import logo from './cesel_logotipo.png'
 import { ThemeToggle } from '@/components/theme-toggle';
 
 const bim360CommonDataMainLinks = [
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
+  //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.1p6w6leVT7m96IJBYFEsLQ", text: "Planos de Obra Aprobados", icon: Map, variant: 'default' as const },
   { href: "https://model.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/model-set/93eafa0d-3f96-405f-9484-4435d8a994e5/views", text: "Modelos de Coordinación BIM", icon: Package, variant: 'default' as const },
 ];

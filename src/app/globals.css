@@ -62,7 +62,7 @@
     --popover: 210 10% 15%;
     --popover-foreground: 170 50% 90%;
 
-    --primary: 180 60% 65%; /* Medium-Light Teal for dark mode primary */
+    --primary: 180 60% 50%; /* Darker Teal for dark mode primary */
     --primary-foreground: 0 0% 100%; /* white */
 
     --secondary: 220 14% 90%; /* Darker secondary */
