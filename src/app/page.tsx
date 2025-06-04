@@ -66,7 +66,7 @@ export default function HomePage() {
                   BIM 360
                 </h2>
                 <LinkCard 
-                  title="Entorno Común de Datos" 
+                  // title="Entorno Común de Datos" 
                   links={bim360CommonDataMainLinks} 
                   accordionGroups={bim360AccordionGroup}
                   defaultButtonVariant="default" 
