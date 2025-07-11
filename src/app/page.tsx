@@ -48,6 +48,7 @@ export default function HomePage() {
               alt="Logo EOPNP" 
               width={150} 
               height={72} 
+              priority
               className="mr-0 sm:mr-5 mb-4 sm:mb-0 rounded-lg"
               data-ai-hint="company emblem"
             />
