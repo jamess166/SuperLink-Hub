@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Search, ExternalLink, FileText, Building, Layers, Info, Hash, User, Calendar, X } from 'lucide-react';
+import { Search, ExternalLink, FileText, Building, Layers, Info, Hash, User, Calendar, X, AlertCircle } from 'lucide-react';
 
 // Define the type for a single document (plano)
 interface Plano {
@@ -18,6 +18,7 @@ interface Plano {
   especialidad: string;
   descripcion: string;
   revision: string;
+  issue: string;
   updated_by: string;
   last_updated: string;
   url: string;
@@ -46,9 +47,6 @@ const PlanoSearch = () => {
     setIsLoading(true);
     setError(null);
     
-    // Do not reset selectedPlano when starting a new search
-    // setSelectedPlano(null); 
-
     try {
       const { data, error: supabaseError } = await supabase
         .from('documentos')
@@ -85,6 +83,7 @@ const PlanoSearch = () => {
       { icon: FileText, label: "Especialidad", value: selectedPlano.especialidad },
       { icon: Info, label: "Descripción", value: selectedPlano.descripcion, fullWidth: true },
       { icon: Hash, label: "Revisión", value: selectedPlano.revision },
+      { icon: AlertCircle, label: "Issue", value: selectedPlano.issue },
       { icon: User, label: "Actualizado por", value: selectedPlano.updated_by },
       { icon: Calendar, label: "Fecha", value: new Date(selectedPlano.last_updated).toLocaleDateString() },
     ];
@@ -196,3 +195,5 @@ const PlanoSearch = () => {
 };
 
 export default PlanoSearch;
+
+    
