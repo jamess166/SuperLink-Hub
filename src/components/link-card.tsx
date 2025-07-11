@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import LinkButton, { type LinkButtonProps } from '@/components/link-button';
 import { cn } from "@/lib/utils";
@@ -29,9 +29,10 @@ interface LinkCardProps {
   accordionGroups?: AccordionGroup[];
   defaultButtonVariant?: LinkButtonProps['variant'];
   className?: string;
+  children?: ReactNode; // Allow children to be passed
 }
 
-const LinkCard: FC<LinkCardProps> = ({ title, links, accordionGroups, defaultButtonVariant = 'default', className }) => {
+const LinkCard: FC<LinkCardProps> = ({ title, links, accordionGroups, defaultButtonVariant = 'default', className, children }) => {
   const hasDirectLinks = links && links.length > 0;
   const hasAccordionGroups = accordionGroups && accordionGroups.length > 0;
 
@@ -42,7 +43,8 @@ const LinkCard: FC<LinkCardProps> = ({ title, links, accordionGroups, defaultBut
           <CardTitle className="text-xl font-semibold text-primary">{title}</CardTitle>
         </CardHeader>
       )}
-      <CardContent className={cn("flex-grow", (!title && (hasDirectLinks || hasAccordionGroups)) && "pt-6")}>
+      <CardContent className={cn("flex-grow", (!title && (children || hasDirectLinks || hasAccordionGroups)) && "pt-6")}>
+        {children}
         {hasDirectLinks && (
           <div className="flex flex-col gap-3">
             {links!.map((link, index) => (

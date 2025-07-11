@@ -1,8 +1,18 @@
 import Image from 'next/image';
-import { Globe, Building, FileText, Map, Package, CheckSquare, FolderOpen, CalendarDays } from 'lucide-react';
+import { Globe, Building, FileText, Map, Package, CheckSquare, FolderOpen, CalendarDays, Search } from 'lucide-react';
 import LinkCard from '@/components/link-card';
 import logo from './cesel_logotipo.png'
 import { ThemeToggle } from '@/components/theme-toggle';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Button } from '@/components/ui/button';
+import PlanoSearch from '@/components/plano-search';
 
 const bim360CommonDataMainLinks = [
   //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
@@ -27,8 +37,8 @@ const bim360AccordionGroup = [
 ];
 
 const ceselEnvironmentLinks = [
-  { href: "https://lookerstudio.google.com/u/0/reporting/aa27f779-df43-420a-a150-9d3efd50ff5a/page/1wkLF?s=l0t3feifGkE", text: "Validación Planos Aprobados", icon: CheckSquare, variant: 'dark' as const },
-  { href: "https://owa.cesel.com.pe:7005/contratos/240800/default.aspx", text: "SharedPoint Proyecto", icon: FolderOpen, variant: 'dark' as const },
+  //{ href: "https://lookerstudio.google.com/u/0/reporting/aa27f779-df43-420a-a150-9d3efd50ff5a/page/1wkLF?s=l0t3feifGkE", text: "Validación Planos Aprobados", icon: CheckSquare, variant: 'dark' as const },
+  //{ href: "https://owa.cesel.com.pe:7005/contratos/240800/default.aspx", text: "SharedPoint Proyecto", icon: FolderOpen, variant: 'dark' as const },
   { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/03.%20Informes%20Semanales", text: "Informes Semanales", icon: CalendarDays, variant: 'dark' as const },
   { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/06.%20Informes%20Mensuales", text: "Informes Mensuales", icon: CalendarDays, variant: 'dark' as const },
 ];
@@ -70,7 +80,19 @@ export default function HomePage() {
                   links={bim360CommonDataMainLinks} 
                   accordionGroups={bim360AccordionGroup}
                   defaultButtonVariant="default" 
-                />
+                >
+                  <Dialog>
+                    <DialogTrigger asChild>
+                       <Button variant="accent" size="lg" className="w-full mb-3">
+                        <Search className="mr-2 h-5 w-5" />
+                        Busca Planos de Obra
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-4xl h-full sm:h-[90vh] flex flex-col">
+                        <PlanoSearch />
+                    </DialogContent>
+                  </Dialog>
+                </LinkCard>
               </div>
               <div>
                 <h2 className="text-2xl sm:text-3xl font-semibold mb-6 text-foreground/90 flex items-center">
