@@ -45,7 +45,9 @@ const PlanoSearch = () => {
 
     setIsLoading(true);
     setError(null);
-    setSelectedPlano(null);
+    
+    // Do not reset selectedPlano when starting a new search
+    // setSelectedPlano(null); 
 
     try {
       const { data, error: supabaseError } = await supabase
@@ -89,104 +91,107 @@ const PlanoSearch = () => {
   }, [selectedPlano]);
 
   return (
-    <>
-        <CardHeader className="flex-shrink-0">
-          <CardTitle className="text-2xl flex items-center"><Search className="mr-3" /> Buscador de Planos</CardTitle>
-          <CardDescription>Escriba el nombre o código del plano que desea encontrar.</CardDescription>
-        </CardHeader>
-        <CardContent className="flex-grow flex flex-col md:flex-row gap-6 overflow-hidden p-0 px-6 pb-6">
-            <div className="flex flex-col w-full md:w-1/3 h-full">
-                <div className="relative mb-4">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <Input
-                    id="search"
-                    type="text"
-                    placeholder="Escriba aquí para buscar..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    className="pl-10 text-base"
-                  />
-                   {query && <X onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground" />}
-                </div>
-                
-                <p className="text-sm text-muted-foreground mb-2 h-5">
-                    {isLoading ? 'Buscando...' : (query.length > 2 && `${results.length} resultado(s) encontrado(s)`)}
-                </p>
-
-                <ScrollArea className="flex-grow border rounded-md">
-                    <div className="p-2">
-                    {isLoading && (
-                        <div className="space-y-2">
-                        {[...Array(5)].map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}
-                        </div>
-                    )}
-                    {!isLoading && error && (
-                        <div className="text-center py-4 text-destructive">{error}</div>
-                    )}
-                    {!isLoading && !error && query.length > 2 && results.length === 0 && (
-                        <div className="text-center py-4 text-muted-foreground">No se encontraron resultados.</div>
-                    )}
-                    {!isLoading && results.map((plano) => (
-                        <Button
-                        key={plano.id}
-                        variant="ghost"
-                        onClick={() => setSelectedPlano(plano)}
-                        className={`w-full justify-start text-left h-auto py-2 px-3 mb-1 ${selectedPlano?.id === plano.id ? 'bg-accent text-accent-foreground' : ''}`}
-                        >
-                        {plano.name}
-                        </Button>
-                    ))}
+     <div className="flex flex-col md:flex-row gap-6 h-full">
+        <div className="flex flex-col w-full md:w-1/3 h-full">
+            <Card className="h-full flex flex-col">
+                <CardHeader>
+                    <CardTitle className="text-2xl flex items-center"><Search className="mr-3" /> Buscador</CardTitle>
+                    <CardDescription>Escriba el nombre o código del plano.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-grow flex flex-col">
+                    <div className="relative mb-4">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <Input
+                        id="search"
+                        type="text"
+                        placeholder="Escriba aquí para buscar..."
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        className="pl-10 text-base"
+                      />
+                       {query && <X onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground cursor-pointer hover:text-foreground" />}
                     </div>
-                </ScrollArea>
-            </div>
+                    
+                    <p className="text-sm text-muted-foreground mb-2 h-5">
+                        {isLoading ? 'Buscando...' : (query.length > 2 && `${results.length} resultado(s) encontrado(s)`)}
+                    </p>
 
-            <div className="w-full md:w-2/3 h-full">
-                 <Card className="h-full flex flex-col">
-                    <CardHeader>
-                        <CardTitle>Detalles del Plano</CardTitle>
-                        <CardDescription>
-                            {selectedPlano ? 'Información detallada del plano seleccionado.' : 'Seleccione un plano de la lista para ver sus detalles.'}
-                        </CardDescription>
-                    </CardHeader>
-                    {selectedPlano ? (
-                    <>
-                        <ScrollArea className="flex-grow">
-                            <CardContent>
-                                <h3 className="font-bold text-lg text-primary mb-4">{selectedPlano.name}</h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
-                                    {detailItems.map(item => (
-                                        <div key={item.label} className={`flex items-start ${item.fullWidth ? 'col-span-full' : ''}`}>
-                                            <item.icon className="h-4 w-4 mr-3 mt-0.5 text-muted-foreground flex-shrink-0" />
-                                            <div>
-                                                <p className="font-semibold text-foreground">{item.label}</p>
-                                                <p className="text-muted-foreground">{item.value}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </CardContent>
-                        </ScrollArea>
-                        <CardFooter>
-                            <Button asChild className="w-full" size="lg">
-                                <a href={selectedPlano.url} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="mr-2 h-5 w-5" />
-                                Abrir Plano
-                                </a>
-                            </Button>
-                        </CardFooter>
-                    </>
-                    ) : (
-                        <div className="flex-grow flex items-center justify-center">
-                            <div className="text-center text-muted-foreground">
-                                <Search size={48} className="mx-auto mb-2" />
-                                <p>Los detalles aparecerán aquí.</p>
+                    <ScrollArea className="flex-grow border rounded-md -mx-2">
+                        <div className="p-2">
+                        {isLoading && (
+                            <div className="space-y-2">
+                            {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-10 w-full" />)}
                             </div>
+                        )}
+                        {!isLoading && error && (
+                            <div className="text-center py-4 text-destructive">{error}</div>
+                        )}
+                        {!isLoading && !error && query.length > 2 && results.length === 0 && (
+                            <div className="text-center py-4 text-muted-foreground">No se encontraron resultados.</div>
+                        )}
+                        {!isLoading && results.map((plano) => (
+                            <Button
+                            key={plano.id}
+                            variant="ghost"
+                            onClick={() => setSelectedPlano(plano)}
+                            className={`w-full justify-start text-left h-auto py-2 px-3 mb-1 ${selectedPlano?.id === plano.id ? 'bg-accent text-accent-foreground' : ''}`}
+                            >
+                            {plano.name}
+                            </Button>
+                        ))}
                         </div>
-                    )}
-                </Card>
-            </div>
-        </CardContent>
-    </>
+                    </ScrollArea>
+                </CardContent>
+            </Card>
+        </div>
+
+        <div className="w-full md:w-2/3 h-full">
+             <Card className="h-full flex flex-col">
+                <CardHeader>
+                    <CardTitle>Detalles del Plano</CardTitle>
+                    <CardDescription>
+                        {selectedPlano ? 'Información detallada del plano seleccionado.' : 'Seleccione un plano de la lista para ver sus detalles.'}
+                    </CardDescription>
+                </CardHeader>
+                {selectedPlano ? (
+                <>
+                    <ScrollArea className="flex-grow">
+                        <CardContent>
+                            <h3 className="font-bold text-lg text-primary mb-4">{selectedPlano.name}</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+                                {detailItems.map(item => (
+                                    <div key={item.label} className={`flex items-start ${item.fullWidth ? 'col-span-full' : ''}`}>
+                                        <item.icon className="h-4 w-4 mr-3 mt-0.5 text-muted-foreground flex-shrink-0" />
+                                        <div>
+                                            <p className="font-semibold text-foreground">{item.label}</p>
+                                            <p className="text-muted-foreground">{item.value}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </CardContent>
+                    </ScrollArea>
+                    <CardFooter>
+                        <Button asChild className="w-full" size="lg">
+                            <a href={selectedPlano.url} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="mr-2 h-5 w-5" />
+                            Abrir Plano
+                            </a>
+                        </Button>
+                    </CardFooter>
+                </>
+                ) : (
+                    <div className="flex-grow flex items-center justify-center">
+                        <div className="text-center text-muted-foreground p-8">
+                            <Search size={48} className="mx-auto mb-4 text-accent" />
+                            <h3 className="text-xl font-semibold mb-2 text-foreground">Busca un plano</h3>
+                            <p>Utiliza el panel de la izquierda para encontrar un plano por su nombre o código. Los detalles aparecerán aquí.</p>
+                        </div>
+                    </div>
+                )}
+            </Card>
+        </div>
+    </div>
   );
 };
 

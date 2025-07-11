@@ -1,18 +1,10 @@
 import Image from 'next/image';
 import { Globe, Building, FileText, Map, Package, CheckSquare, FolderOpen, CalendarDays, Search } from 'lucide-react';
+import Link from 'next/link';
 import LinkCard from '@/components/link-card';
 import logo from './cesel_logotipo.png'
 import { ThemeToggle } from '@/components/theme-toggle';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import { Button } from '@/components/ui/button';
-import PlanoSearch from '@/components/plano-search';
 
 const bim360CommonDataMainLinks = [
   //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
@@ -32,7 +24,6 @@ const bim360AccordionGroup = [
     triggerText: "Expedientes Aprobados por Entregable",
     triggerIcon: FolderOpen,
     links: bim360DeliverablesLinksForAccordion,
-    // triggerVariant: 'secondary' // Opcional: para dar un estilo específico al trigger si fuera un botón
   }
 ];
 
@@ -76,22 +67,16 @@ export default function HomePage() {
                   BIM 360
                 </h2>
                 <LinkCard 
-                  // title="Entorno Común de Datos" 
                   links={bim360CommonDataMainLinks} 
                   accordionGroups={bim360AccordionGroup}
                   defaultButtonVariant="default" 
                 >
-                  <Dialog>
-                    <DialogTrigger asChild>
-                       <Button variant="accent" size="lg" className="w-full mb-3">
-                        <Search className="mr-2 h-5 w-5" />
-                        Busca Planos de Obra
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-4xl h-full sm:h-[90vh] flex flex-col">
-                        <PlanoSearch />
-                    </DialogContent>
-                  </Dialog>
+                  <Button asChild variant="accent" size="lg" className="w-full mb-3">
+                    <Link href="/search">
+                      <Search className="mr-2 h-5 w-5" />
+                      Busca Planos de Obra
+                    </Link>
+                  </Button>
                 </LinkCard>
               </div>
               <div>
