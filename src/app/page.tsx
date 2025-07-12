@@ -5,6 +5,7 @@ import LinkCard from '@/components/link-card';
 import logo from './cesel_logotipo.png'
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
+import UpdateDataDialog from '@/components/update-data-dialog';
 
 const bim360CommonDataMainLinks = [
   //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
@@ -95,9 +96,12 @@ export default function HomePage() {
         </div>
       </main>
       <footer className="text-center py-6 border-t border-border mt-auto">
-        <p className="text-sm text-muted-foreground">
-          SuperLink Hub &copy; {new Date().getFullYear()} | EOPNP Supervisión
-        </p>
+        <div className="container mx-auto flex flex-col sm:flex-row justify-center items-center gap-4">
+          <p className="text-sm text-muted-foreground">
+            SuperLink Hub &copy; {new Date().getFullYear()} | EOPNP Supervisión
+          </p>
+          <UpdateDataDialog />
+        </div>
       </footer>
     </div>
   );

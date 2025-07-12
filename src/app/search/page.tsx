@@ -4,7 +4,6 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Home } from 'lucide-react';
 import Link from 'next/link';
-import UpdateDataDialog from '@/components/update-data-dialog';
 
 export default function SearchPage() {
   return (
@@ -28,7 +27,6 @@ export default function SearchPage() {
           <p className="text-sm text-muted-foreground">
             SuperLink Hub &copy; {new Date().getFullYear()} | EOPNP Supervisión
           </p>
-          <UpdateDataDialog />
         </div>
       </footer>
     </div>
