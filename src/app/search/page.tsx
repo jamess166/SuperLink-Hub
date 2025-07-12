@@ -4,6 +4,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Home } from 'lucide-react';
 import Link from 'next/link';
+import UpdateDataDialog from '@/components/update-data-dialog';
 
 export default function SearchPage() {
   return (
@@ -22,10 +23,13 @@ export default function SearchPage() {
             <PlanoSearch />
         </div>
       </main>
-       <footer className="text-center py-6 border-t border-border mt-auto">
-        <p className="text-sm text-muted-foreground">
-          SuperLink Hub &copy; {new Date().getFullYear()} | EOPNP Supervisión
-        </p>
+       <footer className="text-center py-4 border-t border-border mt-auto">
+        <div className="container mx-auto flex flex-col sm:flex-row justify-center items-center gap-4">
+          <p className="text-sm text-muted-foreground">
+            SuperLink Hub &copy; {new Date().getFullYear()} | EOPNP Supervisión
+          </p>
+          <UpdateDataDialog />
+        </div>
       </footer>
     </div>
   );
