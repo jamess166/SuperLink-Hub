@@ -10,6 +10,7 @@ import UpdateDataDialog from '@/components/update-data-dialog';
 const bim360CommonDataMainLinks = [
   //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.1p6w6leVT7m96IJBYFEsLQ", text: "Planos de Obra Aprobados", icon: Map, variant: 'default' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.j0g4qP6qTPOXmlAfixQNrQ/detail", text: "Modelos de Construcción", icon: Package, variant: 'default' as const },
   { href: "https://model.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/model-set/93eafa0d-3f96-405f-9484-4435d8a994e5/views", text: "Modelos de Coordinación BIM", icon: Package, variant: 'default' as const },
 ];
 
@@ -20,11 +21,23 @@ const bim360DeliverablesLinksForAccordion = [
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.2rU4r4SXSCCoHMJwnAq2_Q", text: "Entregable 08 – UT04", icon: FileText, variant: 'accent' as const },
 ];
 
-const bim360AccordionGroup = [
+const bim360ListSheetLinksForAccordion = [
+  //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.gWb08UicS5CV6fUmbjWltQ/detail/viewer/items/urn:adsk.wipprod:dm.lineage:I3vixD1fQyqsLAxstvOgbw", text: "Entregable 04 – UT01", icon: FileText, variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.gWb08UicS5CV6fUmbjWltQ/detail/viewer/items/urn:adsk.wipprod:dm.lineage:I3vixD1fQyqsLAxstvOgbw", text: "Entregable 06 – UT03", icon: FileText, variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.N_VtD_74R5KLT_v-72ZOKA/detail", text: "Entregable 07 – UT03", icon: FileText, variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.NJAysxP0QWWS1lBXr5HtQg/detail/viewer/items/urn:adsk.wipprod:dm.lineage:_CISFJ77Ti23KpRvUZ2Bkg", text: "Entregable 08 – UT04", icon: FileText, variant: 'accent' as const },
+];
+
+const bim360AccordionGroups = [
   {
     triggerText: "Expedientes Aprobados por Entregable",
     triggerIcon: FolderOpen,
     links: bim360DeliverablesLinksForAccordion,
+  },
+  {
+    triggerText: "Listado de Planos ET",
+    triggerIcon: FolderOpen,
+    links: bim360ListSheetLinksForAccordion,
   }
 ];
 
@@ -70,15 +83,15 @@ export default function HomePage() {
                 </h2>
                 <LinkCard 
                   links={bim360CommonDataMainLinks} 
-                  accordionGroups={bim360AccordionGroup}
+                  accordionGroups={bim360AccordionGroups}
                   defaultButtonVariant="default" 
                 >
-                  <Button asChild variant="accent" size="lg" className="w-full mb-3">
-                    <Link href="/search">
-                      <Search className="mr-2 h-5 w-5" />
-                      Busca Planos de Obra
-                    </Link>
-                  </Button>
+                    <Button asChild className="mb-3" size="lg" variant="accent">
+                        <Link href="/search">
+                            <Search className="mr-2"/>
+                            Busca Planos de Obra
+                        </Link>
+                    </Button>
                 </LinkCard>
               </div>
               <div>
