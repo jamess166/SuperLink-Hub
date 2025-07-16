@@ -52,8 +52,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
-        <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <div className="w-full flex justify-end mb-4">
+        <div className="container mx-auto px-4 py-4 sm:px-6 lg:px-8">
+          <div className="w-full flex justify-end mb-2">
             <ThemeToggle />
           </div>
           <header className="flex flex-col sm:flex-row items-center mb-6 sm:mb-8 text-center sm:text-left">
