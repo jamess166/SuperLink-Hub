@@ -86,12 +86,12 @@ export default function HomePage() {
                   accordionGroups={bim360AccordionGroups}
                   defaultButtonVariant="default" 
                 >
-                    <Button asChild className="mb-3" size="lg" variant="accent">
+                    {/* <Button asChild className="mb-3" size="lg" variant="accent">
                         <Link href="/search">
                             <Search className="mr-2"/>
                             Busca Planos de Obra
                         </Link>
-                    </Button>
+                    </Button> */}
                 </LinkCard>
               </div>
               <div>
