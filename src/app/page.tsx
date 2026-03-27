@@ -43,10 +43,17 @@ const bim360AccordionGroups = [
 
 const ceselAccordionGroups = [
   {
+    triggerText: "SharePoint – Control de Contratos",
+    triggerIcon: 'sharePoint',
+    links: [
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/00.%20Doc%20SGI/2%20Obra/02.%20Control%20de%20Contrato", text: "Control de Contrato Supervisión", icon: 'fileCheck', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Archivos%20recibidos%20del%20Cliente/00%20Contractual%20Contratista", text: "Control de Contrato del Contratista", icon: 'fileCheck', variant: 'dark' as const },
+    ],
+  },
+  {
     triggerText: "SharePoint – Elaboración de Documentos",
     triggerIcon: 'sharePoint',
     links: [
-      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/00.%20Doc%20SGI/2%20Obra/02.%20Control%20de%20Contrato", text: "Control de Contrato", icon: 'fileCheck', variant: 'dark' as const },
       { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/01.%20Cartas", text: "Cartas", icon: 'mail', variant: 'dark' as const },
       { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/04.%20Informes%20T%C3%A9cnicos", text: "Informes Técnicos", icon: 'fileText', variant: 'dark' as const },
       { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/03.%20Informes%20Semanales", text: "Informes Semanales", icon: 'calendarDays', variant: 'dark' as const },
