@@ -1,52 +1,76 @@
 import Image from 'next/image';
-import { Globe, Building, FileText, Map, Package, CheckSquare, FolderOpen, CalendarDays, Search } from 'lucide-react';
-import Link from 'next/link';
+import { Building, Globe } from 'lucide-react';
 import LinkCard from '@/components/link-card';
 import logo from './cesel_logotipo.png'
 import { ThemeToggle } from '@/components/theme-toggle';
-import { Button } from '@/components/ui/button';
 import UpdateDataDialog from '@/components/update-data-dialog';
 
 const bim360CommonDataMainLinks = [
-  //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: FileText, variant: 'default' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.1p6w6leVT7m96IJBYFEsLQ", text: "Planos de Obra Aprobados", icon: Map, variant: 'default' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.j0g4qP6qTPOXmlAfixQNrQ/detail", text: "Modelos de Construcción", icon: Package, variant: 'default' as const },
-  { href: "https://model.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/model-set/93eafa0d-3f96-405f-9484-4435d8a994e5/views", text: "Modelos de Coordinación BIM", icon: Package, variant: 'default' as const },
-];
+  //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.Vp86YoNdSCiH7ZreVxInxw", text: "Expediente Técnico Aprobado", icon: 'fileText', variant: 'default' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.1p6w6leVT7m96IJBYFEsLQ", text: "Planos de Obra Aprobados", icon: 'map', variant: 'default' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.j0g4qP6qTPOXmlAfixQNrQ/detail", text: "Modelos de Construcción", icon: 'package', variant: 'default' as const },
+  { href: "https://model.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/model-set/93eafa0d-3f96-405f-9484-4435d8a994e5/views", text: "Modelos de Coordinación BIM", icon: 'package', variant: 'default' as const },
+] as const;
 
 const bim360DeliverablesLinksForAccordion = [
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co._bxwldVjTjCWdSr9qzq80w", text: "Entregable 04 – UT01", icon: FileText, variant: 'accent' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.F0oCsmu2Tbqz2K26ot7njA", text: "Entregable 06 – UT03", icon: FileText, variant: 'accent' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.ggfsF_I5Qu2VY_oOf8eH4g", text: "Entregable 07 – UT03", icon: FileText, variant: 'accent' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.2rU4r4SXSCCoHMJwnAq2_Q", text: "Entregable 08 – UT04", icon: FileText, variant: 'accent' as const },
-];
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co._bxwldVjTjCWdSr9qzq80w", text: "Entregable 04 – UT01", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.F0oCsmu2Tbqz2K26ot7njA", text: "Entregable 06 – UT03", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.ggfsF_I5Qu2VY_oOf8eH4g", text: "Entregable 07 – UT03", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.2rU4r4SXSCCoHMJwnAq2_Q", text: "Entregable 08 – UT04", icon: 'fileText', variant: 'accent' as const },
+] as const;
 
 const bim360ListSheetLinksForAccordion = [
-  //{ href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.gWb08UicS5CV6fUmbjWltQ/detail/viewer/items/urn:adsk.wipprod:dm.lineage:I3vixD1fQyqsLAxstvOgbw", text: "Entregable 04 – UT01", icon: FileText, variant: 'accent' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.gWb08UicS5CV6fUmbjWltQ/detail/viewer/items/urn:adsk.wipprod:dm.lineage:I3vixD1fQyqsLAxstvOgbw", text: "Entregable 06 – UT03", icon: FileText, variant: 'accent' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.N_VtD_74R5KLT_v-72ZOKA/detail", text: "Entregable 07 – UT03", icon: FileText, variant: 'accent' as const },
-  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.NJAysxP0QWWS1lBXr5HtQg/detail/viewer/items/urn:adsk.wipprod:dm.lineage:_CISFJ77Ti23KpRvUZ2Bkg", text: "Entregable 08 – UT04", icon: FileText, variant: 'accent' as const },
-];
+  //{ href: "...", text: "Entregable 04 – UT01", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.F0oCsmu2Tbqz2K26ot7njA", text: "Entregable 06 – UT03", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.ggfsF_I5Qu2VY_oOf8eH4g", text: "Entregable 07 – UT03", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.2rU4r4SXSCCoHMJwnAq2_Q", text: "Entregable 08 – UT04", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.OBF_Z61oQWmixn-6PW8rNA", text: "Entregable 10 – UT05", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.ZW4EYjFATS2j-LV1PfI_Ew", text: "Entregable 11 – UT06", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.pEgN5TLuTqG94Rdtk8PhZA", text: "Entregable 12 – UT07", icon: 'fileText', variant: 'accent' as const },] as const;
 
 const bim360AccordionGroups = [
   {
     triggerText: "Expedientes Aprobados por Entregable",
-    triggerIcon: FolderOpen,
+    triggerIcon: 'folderOpen',
     links: bim360DeliverablesLinksForAccordion,
   },
   {
     triggerText: "Listado de Planos ET",
-    triggerIcon: FolderOpen,
+    triggerIcon: 'folderOpen',
     links: bim360ListSheetLinksForAccordion,
-  }
-];
+  },
+] as const;
 
-const ceselEnvironmentLinks = [
-  //{ href: "https://lookerstudio.google.com/u/0/reporting/aa27f779-df43-420a-a150-9d3efd50ff5a/page/1wkLF?s=l0t3feifGkE", text: "Validación Planos Aprobados", icon: CheckSquare, variant: 'dark' as const },
-  //{ href: "https://owa.cesel.com.pe:7005/contratos/240800/default.aspx", text: "SharedPoint Proyecto", icon: FolderOpen, variant: 'dark' as const },
-  { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/03.%20Informes%20Semanales", text: "Informes Semanales", icon: CalendarDays, variant: 'dark' as const },
-  { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/06.%20Informes%20Mensuales", text: "Informes Mensuales", icon: CalendarDays, variant: 'dark' as const },
-];
+const ceselAccordionGroups = [
+  {
+    triggerText: "SharePoint – Elaboración de Documentos",
+    triggerIcon: 'sharePoint',
+    links: [
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/00.%20Doc%20SGI/2%20Obra/02.%20Control%20de%20Contrato", text: "Control de Contrato", icon: 'fileCheck', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/01.%20Cartas", text: "Cartas", icon: 'mail', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/04.%20Informes%20T%C3%A9cnicos", text: "Informes Técnicos", icon: 'fileText', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/03.%20Informes%20Semanales", text: "Informes Semanales", icon: 'calendarDays', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/06.%20Informes%20Mensuales", text: "Informes Mensuales", icon: 'calendarDays', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/10.%20Actas%20de%20Reuni%C3%B3n", text: "Actas de Reunión", icon: 'clipboardList', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/Elaboracin%20de%20documentos/10%20Fotos", text: "Fotos", icon: 'camera', variant: 'dark' as const },
+    ],
+  },
+  {
+    triggerText: "SharePoint – Recibidos del Contratista",
+    triggerIcon: 'sharePoint',
+    links: [
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/RecibidosDelContratista/00%20Cartas", text: "Cartas Recibidas", icon: 'mail', variant: 'dark' as const },
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/RecibidosDelContratista/02%20Obra", text: "Reportes y Lookahead de Obra", icon: 'folderOpen', variant: 'dark' as const },
+    ],
+  },
+  {
+    triggerText: "SharePoint – Enviados al Contratista",
+    triggerIcon: 'sharePoint',
+    links: [
+      { href: "https://owa.cesel.com.pe:7005/contratos/240800/EnviadosAlContratista/00%20Cartas", text: "Cartas Enviadas", icon: 'send', variant: 'dark' as const },
+    ],
+  },
+] as const;
 
 export default function HomePage() {
   return (
@@ -99,9 +123,9 @@ export default function HomePage() {
                   <Building className="mr-3 h-7 w-7 text-accent" />
                   Entorno Cesel
                 </h2>
-                <LinkCard 
-                  links={ceselEnvironmentLinks} 
-                  defaultButtonVariant="dark" 
+                <LinkCard
+                  accordionGroups={ceselAccordionGroups}
+                  defaultButtonVariant="dark"
                 />
               </div>
             </div>
