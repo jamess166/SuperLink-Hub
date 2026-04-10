@@ -17,6 +17,9 @@ const bim360DeliverablesLinksForAccordion = [
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.F0oCsmu2Tbqz2K26ot7njA", text: "Entregable 06 – UT03", icon: 'fileText', variant: 'accent' as const },
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.ggfsF_I5Qu2VY_oOf8eH4g", text: "Entregable 07 – UT03", icon: 'fileText', variant: 'accent' as const },
   { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.2rU4r4SXSCCoHMJwnAq2_Q", text: "Entregable 08 – UT04", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.OBF_Z61oQWmixn-6PW8rNA", text: "Entregable 10 – UT05", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.ZW4EYjFATS2j-LV1PfI_Ew", text: "Entregable 11 – UT06", icon: 'fileText', variant: 'accent' as const },
+  { href: "https://docs.b360.autodesk.com/projects/5596e688-2f4f-4ad2-ac25-1c6ec598428a/folders/urn:adsk.wipprod:fs.folder:co.pEgN5TLuTqG94Rdtk8PhZA", text: "Entregable 12 – UT07", icon: 'fileText', variant: 'accent' as const },
 ] as const;
 
 const bim360ListSheetLinksForAccordion = [
